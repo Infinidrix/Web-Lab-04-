@@ -3,7 +3,10 @@ let bankAccounts = [32000, 5000, 900, 0, 100];
 function withdraw() {
     let accountNo = promptAccount();
     let amount = promptAmount();
-
+    if (accountNo == NaN || amount == NaN) {
+        alert("One of the inputs is not a number");
+        return;
+    }
     if (accountNo >= bankAccounts.length || bankAccounts[accountNo] < amount) {
         alert("Invalid operation for account Number");
         return;
@@ -16,7 +19,10 @@ function withdraw() {
 function deposit() {
     let accountNo = promptAccount();
     let amount = promptAmount();
-
+    if (accountNo == NaN || amount == NaN) {
+        alert("One of the inputs is not a number");
+        return;
+    }
     if (accountNo >= bankAccounts.length) {
         alert("Invalid account number");
     }
@@ -28,7 +34,10 @@ function deposit() {
 
 function balance() {
     let accountNo = promptAccount();
-
+    if (accountNo == NaN) {
+        alert("One of the inputs is not a number");
+        return;
+    }
     if (accountNo >= bankAccounts.length) {
         alert("Invalid account number");
         return;
