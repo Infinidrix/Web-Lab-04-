@@ -21,22 +21,19 @@ let height;
 //bmi calculator 
 let calcBmi = function(weight, height) {
 
-    let bmi = weight / (height * height);
-
+    let bmi = weight / (height ** 2);
 
     bmi = Number(bmi.toFixed(1));
 
     console.log("Your Bmi is : " + bmi);
     if (bmi < 18.5)
-        console.log("Your are : Underweight");
+        console.log("You are : Underweight");
     else if (bmi >= 18.5 && bmi <= 24.9)
-        console.log("Your are : Normal");
+        console.log("You are : Normal");
     else if (bmi >= 25.0 && bmi <= 29.9)
-        console.log("Your are : Overweight");
+        console.log("You are : Overweight");
     else if (bmi >= 30.0)
-        console.log("Your are : Obese");
-
-
+        console.log("You are : Obese");
 }
 
 //age calculator 
