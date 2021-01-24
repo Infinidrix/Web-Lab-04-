@@ -8,7 +8,7 @@ function add() {
     numbers.forEach(number => {
         sum += Number(number);
     });
-    return sum;
+    return (isNaN(sum)) ? sum : "Please input numbers only";
 }
 
 function mult() {
@@ -21,21 +21,21 @@ function mult() {
     numbers.forEach(number => {
         product *= Number(number);
     });
-    return product;
+    return (isNaN(product)) ? product : "Please input numbers only";
 }
 
 function div() {
-    let [first, second] = promptTwo();
+    let [first, second, isNumeric] = promptTwo();
     if (Number(second) === 0) {
         alert("Invalid input");
         return;
     }
-    return Number(first) / Number(second);
+    return (isNumeric) ? Number(first) / Number(second) : "Please input numbers only";
 }
 
 function diff() {
-    let [first, second] = promptTwo();
-    return Number(first) - Number(second);
+    let [first, second, isNumeric] = promptTwo();
+    return (isNumeric) ? Number(first) - Number(second) : "Please input numbers only";
 }
 
 function average() {
@@ -51,17 +51,16 @@ function average() {
         sum += Number(number);
     })
 
-    return sum / count;
+    return (sum / count) || "Please input numbers only";
 }
 
 function min() {
     let numbers = promptMany();
-    console.log(numbers);
     if (numbers.length === 0) {
         alert("Empty input not allowed");
         return;
     }
-    return Math.min(...numbers);
+    return Math.min(...numbers) || "Please input numbers only";
 }
 
 function max() {
@@ -70,13 +69,14 @@ function max() {
         alert("Empty input not allowed");
         return;
     }
-    return Math.max(...numbers);
+    return Math.max(...numbers) || "Please input numbers only";
 }
 
 function promptTwo() {
     let value = [];
-    value.push(prompt("Input first value"));
-    value.push(prompt("Input second value"));
+    value.push(parseInt(prompt("Input first value")));
+    value.push(parseInt(prompt("Input second value")));
+    value.push(!isNaN(Math.min(...value)));
     return value;
 }
 

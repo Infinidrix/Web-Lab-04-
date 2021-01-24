@@ -3,7 +3,7 @@ let bankAccounts = [32000, 5000, 900, 0, 100];
 function withdraw() {
     let accountNo = promptAccount();
     let amount = promptAmount();
-    if (accountNo == NaN || amount == NaN) {
+    if (isNaN(accountNo) || isNaN(amount)) {
         alert("One of the inputs is not a number");
         return;
     }
@@ -19,7 +19,7 @@ function withdraw() {
 function deposit() {
     let accountNo = promptAccount();
     let amount = promptAmount();
-    if (accountNo == NaN || amount == NaN) {
+    if (isNaN(accountNo) || isNaN(amount)) {
         alert("One of the inputs is not a number");
         return;
     }
@@ -34,7 +34,7 @@ function deposit() {
 
 function balance() {
     let accountNo = promptAccount();
-    if (accountNo == NaN) {
+    if (isNaN(accountNo)) {
         alert("One of the inputs is not a number");
         return;
     }
@@ -52,8 +52,7 @@ function transfer() {
     let accountNoFirst = promptAccount();
     let accountNoSecond = promptAccount();
     let amount = promptAmount();
-
-    if (accountNoFirst == NaN || accountNoSecond == NaN || amount == NaN) {
+    if (isNaN(accountNoFirst) || isNaN(amount) || isNaN(accountNoSecond)) {
         alert("One of the inputs is not a number");
     } else if (accountNoFirst >= bankAccounts.length || accountNoSecond >= bankAccounts.length) {
         alert("Invalid account number");
@@ -78,11 +77,12 @@ function promptAmount() {
 
 (function() {
     var options = { withdraw, deposit, transfer, balance }
-    var operation = prompt("Which operation do you want to use ( deposit, balance, withdraw, transfer )");
+
+    var operation = prompt("Which operation do you want to use ( deposit, balance, withdraw, transfer )").toLowerCase();
     while (true) {
         if (options[operation]) {
             options[operation]();
-            operation = prompt("Which operation do you want to use ( deposit, balance, withdraw, transfer )");
+            operation = prompt("Which operation do you want to use ( deposit, balance, withdraw, transfer )").toLowerCase();
         } else {
             alert("Unknown operation");
             return;
